@@ -1,0 +1,49 @@
+---
+title: "clrtap-gridded-review"
+author: "Christopher Evangelides"
+date: "24/04/2324"
+output: pdf_document
+---
+
+```{r setup_R, warning=FALSE}
+# library(ggplot2)
+# library(tidyverse)
+# library(officer)
+# library(here)
+# library(odbc)
+# library(dbplyr)
+# library(janitor)
+# library(stringr)
+# library(readxl)
+# library(sf)
+# library(DBI)
+# library(RPostgres)
+# library(purrr)
+library(RPostgreSQL)
+# library(here)
+# library(RODBC)
+```    
+
+# 1. Setup
+
+```{r setup_docs}
+source("./pg_gisdata_connect.R")
+source("./parameters.R")
+```
+
+```{r create_schema}
+dbExecute(conn, paste0("CREATE SCHEMA clrtap;"))
+dbExecute(conn, paste0("GRANT ALL PRIVILEGES ON SCHEMA clrtap TO PUBLIC;"))
+```
+
+# 2. Load data
+
+Load data from country reports (EMEP) and CAMS.
+
+# 2.1 EMEP
+
+```{r}
+
+
+```
+
