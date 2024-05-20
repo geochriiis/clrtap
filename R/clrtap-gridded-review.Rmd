@@ -265,3 +265,46 @@ dbExecute(conn, paste0("CREATE INDEX idx_reported_nmvoc_e_solvents_year ON clrta
 
 
 ``` 
+
+# 5. Manual changes
+
+```{r}
+dbExecute(conn, paste0("ALTER TABLE clrtap.cams_nmvoc_e_solvents 
+                        ADD COLUMN pollutant_code VARCHAR DEFAULT 'NMVOC'"));
+dbExecute(conn, paste0("ALTER TABLE clrtap.reported_nmvoc_e_solvents 
+                        ADD COLUMN pollutant_code VARCHAR DEFAULT 'NMVOC'"));
+
+```
+
+```{r}
+
+dbExecute(conn, paste0("ALTER TABLE clrtap.cams_nmvoc_e_solvents 
+                        ADD COLUMN units varchar DEFAULT 't'"));
+
+dbExecute(conn, paste0("ALTER TABLE clrtap.reported_nmvoc_e_solvents 
+                        ADD COLUMN units varchar DEFAULT 't'"));
+```
+## 5.1 lonlat
+```{r}
+dbExecute(conn, paste0("ALTER TABLE clrtap.reported_nmvoc_e_solvents ADD COLUMN lonlat TEXT;"));
+dbExecute(conn, paste0("ALTER TABLE clrtap.cams_nmvoc_e_solvents ADD COLUMN lonlat TEXT;"));
+
+dbExecute(conn, paste0("UPDATE clrtap.reported_nmvoc_e_solvents SET lonlat = x || ',' || y;"));
+dbExecute(conn, paste0("UPDATE clrtap.cams_nmvoc_e_solvents     SET lonlat = x || ',' || y;"));
+
+```
+
+## 5.2 Update CAMS coords
+```{r}
+# dbExecute(conn, paste0("UPDATE clrtap.cams_nmvoc_e_solvents AS cams
+# SET \"ISO2\" = reported.\"ISO2\"
+# FROM clrtap.reported_nmvoc_e_solvents AS reported
+# WHERE cams.lonlat = reported.lonlat;
+# "));
+
+```
+
+
+```
+
+
