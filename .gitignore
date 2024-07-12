@@ -6,6 +6,5 @@
 !/images/
 !/example-plot/
 !/docs
-!/.gitignore
 jupyter/.ipynb_checkpoints
 jupyter/.ipynb_checkpoints/clrtap-review-checkpoint.ipynb
