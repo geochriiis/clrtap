@@ -4,6 +4,7 @@
 !/jupyter/
 !/R
 !/images/
+!/example-plot/
 !/docs
 !/.gitignore
 jupyter/.ipynb_checkpoints
